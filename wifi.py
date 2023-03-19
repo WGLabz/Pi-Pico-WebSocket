@@ -1,4 +1,5 @@
 import network
+import utime
 
 def connect_wifi(ssid,password,status_led):
     wlan = network.WLAN(network.STA_IF)
@@ -12,7 +13,7 @@ def connect_wifi(ssid,password,status_led):
             break
         max_connection_retry -= 1
         print('waiting for connection...')
-        time.sleep(1)
+        utime.sleep(1)
 
     # Connection status
     if wlan.status() != 3:

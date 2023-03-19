@@ -80,7 +80,7 @@ class AsyncWebsocketClient:
             await a.sleep_ms(self.delay_read)
         return b
 
-    async def connect(self, uri, headers=[]):
+    async def handshake(self, uri, headers=[]):
         if self.sock:
             self.close()
 
