@@ -4,7 +4,7 @@ from machine import Pin
 # The used lib from http://bit.ly/3n2t9il
 import uwebsockets.ws_client
 import os
-import wifi
+from wifi import connect_wifi
 
 print(uwebsockets.client)
 def hello():
@@ -29,7 +29,8 @@ status_led = Pin("LED",Pin.OUT)
 wifi_ssid = 'MIFI_D094'
 wifi_password = '1234567890'
 
-wifi.connect_wifi(wifi_ssid,wifi_password,status_led)
+# wi_fi = wifi.WiFiConnection()
+connect_wifi(wifi_ssid,wifi_password,status_led)
 
 
 hello()

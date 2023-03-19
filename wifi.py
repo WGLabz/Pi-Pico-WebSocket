@@ -1,11 +1,9 @@
 import network
 
-class WiFiConnection:
-
 def connect_wifi(ssid,password,status_led):
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
-    wlan.connect(wifi_ssid, wifi_password)
+    wlan.connect(ssid, password)
 
     # Try to connect to wifi network
     max_connection_retry = 10
