@@ -4,7 +4,7 @@ import json
 from random import randint
 from machine import Pin
 import gc
-
+from telematry import get_data 
 from async_websocket_client import AsyncWebsocketClient
 
 # trying to read config --------------------------------------------------------
@@ -83,8 +83,8 @@ async def blink_loop():
         send_counter = send_counter + 1
         if ws is not None:
             if send_counter > 20:
-                if await ws.open():
-                    await ws.send('SOS!')
+                if await ws.open(): 
+                    await ws.send(get_data())
                 print("SOS!1", end=' ')
                 send_counter = 0
 

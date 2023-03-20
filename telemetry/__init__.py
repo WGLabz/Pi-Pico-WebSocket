@@ -1,0 +1,1 @@
+from .telemetry import get_data
