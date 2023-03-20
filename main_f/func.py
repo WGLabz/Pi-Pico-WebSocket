@@ -62,10 +62,15 @@ async def process_data(data):
         if data:
             print("Data > {}".format(data))
             json_input = json.loads(data)
+            if json_input["data"] == "PAYLOAD":
+                if await ws.open(): 
+                    await ws.send(get_data())
+                return
             if json_input["data"]:
                 status_led.value(1)
             else:
                 status_led.value(0)
+            return
                 
     except:
         print('Exception parsing in JSON')
