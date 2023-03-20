@@ -1,7 +1,8 @@
 import gc
 import os
-from machine import ADC
+from machine import ADC,unique_id
 import ujson
+import ubinascii
 
 def get_data():
     sensor_temp = ADC(4)
@@ -19,6 +20,7 @@ def get_data():
 
     # Cretae a JSON string
     return ujson.dumps({
+        "ID": ubinascii.hexlify(unique_id()).decode('utf-8'),
         "sensors":[{
             "type": "temperature",
             "value":temperature,
