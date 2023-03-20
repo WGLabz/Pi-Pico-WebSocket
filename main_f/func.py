@@ -4,7 +4,7 @@ import json
 from random import randint
 from machine import Pin
 import gc
-from telematry import get_data 
+from telemetry import get_data
 from async_websocket_client import AsyncWebsocketClient
 
 # trying to read config --------------------------------------------------------
@@ -56,21 +56,23 @@ async def wifi_connect(SSID: str, pwd: str, attempts: int = 3, delay_in_msec: in
     return wifi
 
 status_led = Pin("LED", Pin.OUT)
-async def blink_sos():
-    global status_led
-
-    async def blink(on_ms: int, off_ms: int):
-        status_led.value(1)
-        await a.sleep_ms(on_ms)
-        status_led.value(0)
-        await a.sleep_ms(off_ms)
-
-    await blink(200, 50)
-
+async def process_data(data):
+    global status_led   
+    try:
+        if data:
+            print("Data > {}".format(data))
+            json_input = json.loads(data)
+            if json_input["data"]:
+                status_led.value(1)
+            else:
+                status_led.value(0)
+                
+    except:
+        print('Exception parsing in JSON')
 # ------------------------------------------------------
 # Main loop function: blink and send data to server.
 # This code emulates main control cycle for controller.
-async def blink_loop():
+async def send_telemetry():
     global lock
     global data_from_ws
     global ws
@@ -79,20 +81,20 @@ async def blink_loop():
     
     send_counter = 0
     while True:
-        await blink_sos()
         send_counter = send_counter + 1
         if ws is not None:
-            if send_counter > 20:
+            # delay to send data. 5 min, 5 * 60 * 1000 ms / 500 ms , 600
+            if send_counter > 600: 
                 if await ws.open(): 
                     await ws.send(get_data())
-                print("SOS!1", end=' ')
-                send_counter = 0
+                    print('Data pushed!')
+                    send_counter = 0
 
-            # lock data archive
+            # lock data archive and process in data
             await lock.acquire()
             if data_from_ws:
                 for item in data_from_ws:
-                    print("\nData from ws: {}".format(item))
+                    await process_data(item)
                 data_from_ws = []
             lock.release()
             gc.collect()

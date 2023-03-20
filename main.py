@@ -1,9 +1,9 @@
 import uasyncio as a
-from main_f import read_loop, blink_loop
+from main_f import read_loop, send_telemetry
 
 async def main():
 
-    tasks = [read_loop(), blink_loop()]
+    tasks = [read_loop(), send_telemetry()]
     await a.gather(*tasks)
 
 a.run(main())
