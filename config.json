@@ -1,0 +1,10 @@
+{
+    "wifi": {
+        "SSID": "MIFI_D094",
+        "password": "1234567890",
+        "attempts": 3,
+        "delay_in_msec": 200
+    },
+    "server": "ws://192.168.0.103:1880/test/esp32",
+    "socket_delay_ms": 5
+}
