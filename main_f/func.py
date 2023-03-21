@@ -60,7 +60,7 @@ async def process_data(data):
     global status_led   
     try:
         if data:
-            print("Data > {}".format(data))
+            print("Data > {}".format(data)) # Expected format {"data" : PAYLOAD | 1 | 0}
             json_input = json.loads(data)
             if json_input["data"] == "PAYLOAD":
                 if await ws.open(): 
