@@ -5,7 +5,7 @@ import ujson
 import ubinascii
 
 def get_data():
-    
+
     #  Get on-board temperature sensor details
     sensor_temp = ADC(4)
     conversion_factor = 3.3 / (65535)
@@ -16,8 +16,8 @@ def get_data():
     # Get disk info
     disk_info = os.statvfs('//')
 
-    # Get RAM info
-    free_ram = gc.mem_free()
+    # Get RAM info (Heap Mem)
+    free_ram = gc.mem_free() 
     used_ram = gc.mem_alloc()
     total_ram= free_ram+used_ram
 
