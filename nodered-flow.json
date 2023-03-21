@@ -1,0 +1,625 @@
+[
+    {
+        "id": "c9fc6dfb32778bf8",
+        "type": "tab",
+        "label": "MU Websocket",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d3ec2b34c9706d35",
+        "type": "junction",
+        "z": "c9fc6dfb32778bf8",
+        "x": 600,
+        "y": 60,
+        "wires": [
+            [
+                "8c3e07640e696509"
+            ]
+        ]
+    },
+    {
+        "id": "ab98bbb101eb566b",
+        "type": "junction",
+        "z": "c9fc6dfb32778bf8",
+        "x": 620,
+        "y": 260,
+        "wires": [
+            [
+                "fa05b7783a588165",
+                "26fad1859df6c392"
+            ]
+        ]
+    },
+    {
+        "id": "f74bed25c3b2c826",
+        "type": "websocket-listener",
+        "path": "/test/esp32",
+        "wholemsg": "false"
+    },
+    {
+        "id": "5400dc17d4525d7f",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://192.168.0.103:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "2b74c896e7d81161",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "15b298751a3be3eb",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "2c5e310f54de7ce8",
+        "type": "ui_group",
+        "name": "Data over last 12 Hrs",
+        "tab": "2b74c896e7d81161",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "95013bf1172998f0",
+        "type": "websocket in",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "server": "f74bed25c3b2c826",
+        "client": "",
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "182d7097b7754243"
+            ]
+        ]
+    },
+    {
+        "id": "26fad1859df6c392",
+        "type": "debug",
+        "z": "c9fc6dfb32778bf8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "8c3e07640e696509",
+        "type": "websocket out",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "server": "f74bed25c3b2c826",
+        "client": "",
+        "x": 980,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "5b7cad19cb1bb850",
+        "type": "inject",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "7d32389673df921e"
+            ]
+        ]
+    },
+    {
+        "id": "7d32389673df921e",
+        "type": "function",
+        "z": "c9fc6dfb32778bf8",
+        "name": "LED OFF",
+        "func": "msg.payload = {\n    data: 0\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "d3ec2b34c9706d35"
+            ]
+        ]
+    },
+    {
+        "id": "9e3b322e07d1774c",
+        "type": "function",
+        "z": "c9fc6dfb32778bf8",
+        "name": "LED ON",
+        "func": "msg.payload = {\n    data: 1\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "d3ec2b34c9706d35"
+            ]
+        ]
+    },
+    {
+        "id": "f0ac114b3d19fb65",
+        "type": "inject",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "9e3b322e07d1774c"
+            ]
+        ]
+    },
+    {
+        "id": "71dbb8b3e031ce82",
+        "type": "function",
+        "z": "c9fc6dfb32778bf8",
+        "name": "Request Payload",
+        "func": "msg.payload = {\n    data: \"PAYLOAD\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "d3ec2b34c9706d35"
+            ]
+        ]
+    },
+    {
+        "id": "bb35a197276ba7a8",
+        "type": "inject",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "71dbb8b3e031ce82"
+            ]
+        ]
+    },
+    {
+        "id": "182d7097b7754243",
+        "type": "json",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "ab98bbb101eb566b"
+            ]
+        ]
+    },
+    {
+        "id": "187e2c530d468fdc",
+        "type": "influxdb out",
+        "z": "c9fc6dfb32778bf8",
+        "influxdb": "5400dc17d4525d7f",
+        "name": "",
+        "measurement": "picos",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "WGLabz",
+        "bucket": "Test",
+        "x": 1050,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fa05b7783a588165",
+        "type": "function",
+        "z": "c9fc6dfb32778bf8",
+        "name": "prep data",
+        "func": "//{ \"sensors\": [{ \"value\": 25.17182, \"type\": \"temperature\", \"unit\": \"C\" }], \"ID\": \"e6614864d34e6c34\", \"memory\": { \"DISK\": { \"used\": 172368, \"total\": 192448, \"unit\": \"B\" }, \"RAM\": { \"used\": 0.7539063, \"total\": 0.828125, \"unit\": \"MB\" } } }\nvar payload = msg.payload;\nvar deviceIDTag = { devic_id: payload.ID, unit:\"\" };\n\nvar responseArray = [];\n\nif (payload.memory.DISK) {\n    deviceIDTag.unit = payload.memory.DISK.unit;\n    responseArray.push([{ disk_used: payload.memory.DISK.used }, deviceIDTag])\n    deviceIDTag.unit = payload.memory.RAM.unit;\n    responseArray.push([{ ram_used: payload.memory.RAM.used }, deviceIDTag])\n}\nif(payload.sensors){\n    payload.sensors.forEach(function(sensor) {\n        var obj = {};\n        obj['sensor_'+sensor['type']] = sensor.value;\n        deviceIDTag.unit = sensor.unit;\n        responseArray.push([obj, deviceIDTag])\n    });\n}\n\nmsg.payload = responseArray;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 260,
+        "wires": [
+            [
+                "187e2c530d468fdc"
+            ]
+        ]
+    },
+    {
+        "id": "c9e5e52c587fdae0",
+        "type": "influxdb in",
+        "z": "c9fc6dfb32778bf8",
+        "influxdb": "5400dc17d4525d7f",
+        "name": "",
+        "query": "from(bucket: \"Test\")\n  |> range(start: -12h)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"picos\")\n  |> filter(fn: (r) => r[\"_field\"] == \"disk_used\" or r[\"_field\"] == \"ram_used\" or r[\"_field\"] == \"sensor_temperature\")\n  |> aggregateWindow(every: 5m, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "WGLabz",
+        "x": 510,
+        "y": 340,
+        "wires": [
+            [
+                "d22f37c5a7ab0d55",
+                "16fe7ed59a4dc2e8"
+            ]
+        ]
+    },
+    {
+        "id": "e3bd4ecf650c5125",
+        "type": "inject",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "topic": "",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "10e15b8451a3444c"
+            ]
+        ]
+    },
+    {
+        "id": "c180205e676c5f35",
+        "type": "ui_chart",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "group": "2c5e310f54de7ce8",
+        "order": 0,
+        "width": "12",
+        "height": "9",
+        "label": "Sensors Data",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "200",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1000,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d22f37c5a7ab0d55",
+        "type": "function",
+        "z": "c9fc6dfb32778bf8",
+        "name": "Process Chart",
+        "func": "\nvar payload = {\n    series: [],\n    data: [],\n    labels: []\n}\nmsg.payload.forEach(function (val) {\n    var index = payload.labels.indexOf(val._field);\n    if (index > -1) {\n        payload.data[index].push({\n            x: val._time,\n            y: val._value\n        });\n    } else {\n        payload.labels.push(val._field);\n        payload.series.push(`${val._field} (${val.unit})`);\n        payload.data.push([{\n            x: val._time,\n            y: val._value\n        }]);\n    }\n});\n\nmsg.payload = [payload];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 340,
+        "wires": [
+            [
+                "c180205e676c5f35",
+                "b3bbf7d7979b2257",
+                "035980a498481141"
+            ]
+        ]
+    },
+    {
+        "id": "52e821bd4efe61c0",
+        "type": "ui_dropdown",
+        "z": "c9fc6dfb32778bf8",
+        "name": "",
+        "label": "Select KPI",
+        "tooltip": "",
+        "place": "ALL",
+        "group": "2c5e310f54de7ce8",
+        "order": 1,
+        "width": "4",
+        "height": "1",
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 490,
+        "y": 380,
+        "wires": [
+            [
+                "10e15b8451a3444c"
+            ]
+        ]
+    },
+    {
+        "id": "b3bbf7d7979b2257",
+        "type": "function",
+        "z": "c9fc6dfb32778bf8",
+        "name": "function 2",
+        "func": "if (!msg.fromdropdown){\n    msg.options = msg.payload[0].labels;\n    msg.options.push(\"All\")\n    msg.data = msg.payload;\n    msg.payload = \"All\";\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 380,
+        "wires": [
+            [
+                "52e821bd4efe61c0"
+            ]
+        ]
+    },
+    {
+        "id": "035980a498481141",
+        "type": "debug",
+        "z": "c9fc6dfb32778bf8",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "10e15b8451a3444c",
+        "type": "function",
+        "z": "c9fc6dfb32778bf8",
+        "name": "Flux Query",
+        "func": "var fields = !!msg.payload && msg.payload!== 'All' ? 'r[\"_field\"] == \"' + msg.payload +'\"': 'r[\"_field\"] == \"disk_used\" or r[\"_field\"] == \"ram_used\" or r[\"_field\"] == \"sensor_temperature\"'\nmsg.query = 'from(bucket: \"Test\")'+\n            '|> range(start: -12h)'+\n            '|> filter(fn: (r) => r[\"_measurement\"] == \"picos\")'+\n            '|> filter(fn: (r) => ' + fields+')'+\n            '|> aggregateWindow(every: 5m, fn: mean, createEmpty: false)'+\n            '|> yield(name: \"mean\")';\nmsg.fromdropdown = !!msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 340,
+        "wires": [
+            [
+                "c9e5e52c587fdae0"
+            ]
+        ]
+    },
+    {
+        "id": "16fe7ed59a4dc2e8",
+        "type": "debug",
+        "z": "c9fc6dfb32778bf8",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 460,
+        "wires": []
+    }
+]
